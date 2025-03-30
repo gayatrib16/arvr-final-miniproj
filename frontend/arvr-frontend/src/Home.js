@@ -19,24 +19,38 @@ const Home = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "#d2b48c", minHeight: "100vh", padding: "20px" }}>
-      <div className="container mt-5" style={{ padding: "20px", borderRadius: "10px" }}>
-        <div className="row">
+    <div style={{ backgroundColor: "#f5f5f5", minHeight: "100vh", padding: "40px" }}>
+      <div className="container mt-5" style={{ maxWidth: "1200px" }}>
+        <div className="row g-4">
           {[1, 2, 3, 4, 5, 6].map((item) => (
             <div key={item} className="col-md-4">
-              <div className="card mb-3" style={{ backgroundColor: "#e3f2fd", border: "1px solid #90caf9" }}>
-                <div className="card-body">
-                  <h5 className="card-title" style={{ color: "#0d47a1" }}>{infoData[item].name}</h5>
-                  <p className="card-text">Click below to view information.</p>
-                  <button className="btn btn-primary" onClick={() => fetchData(item)}>View Info</button>
-                  <a href={infoData[item].url} className="btn btn-secondary ms-2" target="_blank" rel="noopener noreferrer">Go to {infoData[item].name}</a>
+              <div className="card shadow-sm border-0" style={{ borderRadius: "12px", overflow: "hidden" }}>
+                <div className="card-body text-center" style={{ background: "linear-gradient(135deg, #eceff1, #e3f2fd)" }}>
+                  <h5 className="card-title text-primary fw-bold">{infoData[item].name}</h5>
+                  <p className="card-text">Click below to view details.</p>
+                  <button 
+                    className="btn btn-outline-primary fw-bold px-4 py-2" 
+                    onClick={() => fetchData(item)}
+                    style={{ transition: "0.3s", borderRadius: "8px" }}
+                  >
+                    View Info
+                  </button>
+                  <a 
+                    href={infoData[item].url} 
+                    className="btn btn-primary ms-2 fw-bold px-4 py-2" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    style={{ transition: "0.3s", borderRadius: "8px" }}
+                  >
+                    Visit Page
+                  </a>
                 </div>
               </div>
               {data[item] && (
-                <div className="card mt-2" style={{ backgroundColor: "#ffecb3", border: "1px solid #ffb300" }}>
-                  <div className="card-body">
-                    <h5 className="card-title" style={{ color: "#ff6f00" }}>{data[item].name}</h5>
-                    <p className="card-text">{data[item].description}</p>
+                <div className="card mt-3 shadow-sm border-0" style={{ backgroundColor: "#fff3e0", borderRadius: "12px" }}>
+                  <div className="card-body text-center">
+                    <h5 className="card-title text-warning fw-bold">{data[item].name}</h5>
+                    <p className="card-text text-muted">{data[item].description}</p>
                   </div>
                 </div>
               )}
